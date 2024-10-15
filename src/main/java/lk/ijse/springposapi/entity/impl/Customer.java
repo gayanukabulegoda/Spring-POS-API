@@ -21,7 +21,7 @@ public class Customer implements SuperEntity {
     private int id;
     @Column(nullable = false, length = 40)
     private String name;
-    @Column(unique = true, nullable = false, length = 20)
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
     @Column(nullable = false, length = 30)
     private String city;

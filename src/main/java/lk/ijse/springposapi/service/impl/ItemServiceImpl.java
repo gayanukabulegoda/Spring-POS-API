@@ -42,6 +42,8 @@ public class ItemServiceImpl implements ItemService {
     public void deleteItem(int id) {
         if (orderDetailRepository.existsByItemId(id)) {
             throw new IllegalStateException("Cannot delete item as it is part of an existing order.");
+        } else if (!itemRepository.existsById(id)) {
+            throw new ItemNotFoundException("Item not found");
         }
         itemRepository.deleteById(id);
     }
@@ -56,6 +58,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDTO> getAllItems() {
-        return mapping.convertToDTOList(itemRepository.findAll());
+        return mapping.convertToDTOList(itemRepository.findAll(), ItemDTO.class);
     }
 }

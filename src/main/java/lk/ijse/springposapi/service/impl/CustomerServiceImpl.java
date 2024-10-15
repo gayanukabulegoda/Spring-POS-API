@@ -43,6 +43,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(int id) {
         if (orderRepository.existsByCustomerId(id)) {
             throw new IllegalStateException("Cannot delete customer as it is part of an existing order.");
+        } else if (!customerRepository.existsById(id)) {
+            throw new CustomerNotFoundException("Customer not found");
         }
         customerRepository.deleteById(id);
     }
@@ -57,6 +59,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        return mapping.convertToDTOList(customerRepository.findAll());
+        return mapping.convertToDTOList(customerRepository.findAll(), CustomerDTO.class);
     }
 }

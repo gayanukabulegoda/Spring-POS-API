@@ -79,6 +79,21 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderDTO> getAllOrders() {
         List<Order> allOrders = orderRepository.findAll();
-        return mapping.convertToDTOList(allOrders);
+        List<OrderDTO> orderDTOS = mapping.convertToDTOList(allOrders, OrderDTO.class);
+        for (OrderDTO orderDTO : orderDTOS) {
+            List<OrderDetail> orderDetailsByOrder = orderDetailRepository.getAllByOrder(mapping.convertToEntity(orderDTO, Order.class));
+            List<ItemDTO> list = orderDetailsByOrder.stream().map(od -> new ItemDTO(
+                    String.valueOf(od.getItem().getId()),
+                    od.getItem().getName(),
+                    String.valueOf(od.getItem().getPrice()),
+                    String.valueOf(od.getQty())
+            )).toList();
+            orderDTO.setItems(list);
+
+            Customer customer = customerRepository.findById(Integer.parseInt(orderDTO.getCustomerId())).orElse(null);
+            if (customer == null) throw new CustomerNotFoundException("Customer not found with ID: " + orderDTO.getCustomerId());
+            orderDTO.setCustomerId(String.valueOf(customer.getId()));
+        }
+        return orderDTOS;
     }
 }
