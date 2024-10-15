@@ -2,6 +2,7 @@ package lk.ijse.springposapi.dto.impl;
 
 import lk.ijse.springposapi.customObj.OrderResponse;
 import lk.ijse.springposapi.dto.SuperDTO;
+import lk.ijse.springposapi.entity.impl.OrderDetail;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

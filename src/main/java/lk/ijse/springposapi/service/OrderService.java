@@ -9,6 +9,6 @@ import java.util.List;
 @Service
 public interface OrderService {
     void saveOrder(OrderDTO orderDTO);
-    OrderResponse getSelectedOrder(String id);
+    OrderResponse getSelectedOrder(int id);
     List<OrderDTO> getAllOrders();
 }

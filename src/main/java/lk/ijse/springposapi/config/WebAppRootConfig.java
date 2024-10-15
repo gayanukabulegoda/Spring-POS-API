@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = "lk.ijse.springposapi")
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "lk.ijse.springposapi.repository")
 @EnableTransactionManagement
 public class WebAppRootConfig {
     @Bean
@@ -31,7 +31,7 @@ public class WebAppRootConfig {
         dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dmds.setUrl("jdbc:mysql://localhost:3306/spring_pos_api?createDatabaseIfNotExist=true");
         dmds.setUsername("root");
-        dmds.setPassword("Ijse@1234");
+        dmds.setPassword("grb1234");
         return dmds;
     }
 

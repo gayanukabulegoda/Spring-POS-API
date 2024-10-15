@@ -1,5 +1,7 @@
 package lk.ijse.springposapi.util;
 
+import lk.ijse.springposapi.dto.impl.OrderDTO;
+import lk.ijse.springposapi.entity.impl.Order;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
