@@ -1,5 +1,6 @@
 package lk.ijse.springposapi.entity.impl;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lk.ijse.springposapi.embedded.OrderDetailPK;
 import lk.ijse.springposapi.entity.SuperEntity;
@@ -22,5 +23,6 @@ public class OrderDetail implements SuperEntity {
     private Item item;
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Order order;
 }

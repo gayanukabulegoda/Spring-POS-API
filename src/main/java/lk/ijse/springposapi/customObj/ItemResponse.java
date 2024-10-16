@@ -1,4 +1,3 @@
 package lk.ijse.springposapi.customObj;
 
-public interface ItemResponse {
-}
+public interface ItemResponse {}

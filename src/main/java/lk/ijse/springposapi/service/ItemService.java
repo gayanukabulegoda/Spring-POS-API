@@ -9,8 +9,8 @@ import java.util.List;
 @Service
 public interface ItemService {
     void saveItem(ItemDTO itemDTO);
-    void updateItem(ItemDTO itemDTO);
-    void deleteItem(String id);
-    ItemResponse getSelectedItem(String id);
+    void updateItem(int id, ItemDTO itemDTO);
+    void deleteItem(int id);
+    ItemResponse getSelectedItem(int id);
     List<ItemDTO> getAllItems();
 }
